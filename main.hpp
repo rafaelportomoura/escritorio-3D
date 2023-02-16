@@ -36,7 +36,7 @@ GLfloat NOTEBOOK[3] = { 0,17.5,-40 };
 GLfloat CHAIR[3] = { 0,7,-10 };
 GLfloat DESK[3] = { 0,7.5,-40 };
 GLfloat LAMPSHADE[3] = { 20,22,-40 };
-
+bool is_init = true;
 void screenSize() {
   if ( fullscreen ) {
     glutFullScreen();
@@ -44,7 +44,10 @@ void screenSize() {
   else {
     glutReshapeWindow( 1920, 1080 );
   }
-
+  if ( is_init ) {
+    is_init = false;
+    return;
+  }
   glutPostRedisplay();
 }
 
@@ -137,9 +140,9 @@ void lightSwitch( bool ligth ) {
 
 bool checkIfObjectIsSelected( GLfloat mouseX, GLfloat posX, GLfloat mouseY, GLfloat posY, GLfloat winZ ) {
   GLfloat distance = winZ * 100;
-  cout << "mouseX: " << posX - distance << " <= " << mouseX << " <= " << posX + distance << " = " << ( posX - distance <= mouseX && mouseX <= posY + distance ) << endl;
-  cout << "mouseY: " << posY - distance << " <= " << mouseY << " <= " << posY + distance << " = " << ( posY - distance <= mouseY && mouseY <= posY + distance ) << endl;
-  cout << "screenWidth: " << screenWidth << "\t" << "screenHeight: " << screenHeight << endl;
+  // cout << "mouseX: " << posX - distance << " <= " << mouseX << " <= " << posX + distance << " = " << ( posX - distance <= mouseX && mouseX <= posY + distance ) << endl;
+  // cout << "mouseY: " << posY - distance << " <= " << mouseY << " <= " << posY + distance << " = " << ( posY - distance <= mouseY && mouseY <= posY + distance ) << endl;
+  // cout << "screenWidth: " << screenWidth << "\t" << "screenHeight: " << screenHeight << endl;
 
   if ( not( posX - distance <= mouseX && mouseX <= posX + distance ) ) {
     return false;
