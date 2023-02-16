@@ -31,7 +31,7 @@ bool notebook_color = 1; //cor do notebook
 bool lampshade_color = 1; // cor da lampada
 bool light_state = 1;
 int t = 0; // incrementa para mudar cor da tela
-bool fullscreen = false;
+bool fullscreen = true;
 GLfloat NOTEBOOK[3] = { 0,17.5,-40 };
 GLfloat CHAIR[3] = { 0,7,-10 };
 GLfloat DESK[3] = { 0,7.5,-40 };
@@ -137,9 +137,9 @@ void lightSwitch( bool ligth ) {
 
 bool checkIfObjectIsSelected( GLfloat mouseX, GLfloat posX, GLfloat mouseY, GLfloat posY, GLfloat winZ ) {
   GLfloat distance = winZ * 100;
-  // cout << "mouseX: " << posX - distance << " <= " << mouseX << " <= " << posX + distance << " = " << ( posX - distance <= mouseX && mouseX <= posY + distance ) << endl;
-  // cout << "mouseY: " << posY - distance << " <= " << mouseY << " <= " << posY + distance << " = " << ( posY - distance <= mouseY && mouseY <= posY + distance ) << endl;
-  // cout << "screenWidth: " << screenWidth << "\t" << "screenHeight: " << screenHeight << endl;
+  cout << "mouseX: " << posX - distance << " <= " << mouseX << " <= " << posX + distance << " = " << ( posX - distance <= mouseX && mouseX <= posY + distance ) << endl;
+  cout << "mouseY: " << posY - distance << " <= " << mouseY << " <= " << posY + distance << " = " << ( posY - distance <= mouseY && mouseY <= posY + distance ) << endl;
+  cout << "screenWidth: " << screenWidth << "\t" << "screenHeight: " << screenHeight << endl;
 
   if ( not( posX - distance <= mouseX && mouseX <= posX + distance ) ) {
     return false;
